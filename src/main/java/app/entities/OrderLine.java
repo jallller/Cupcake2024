@@ -1,6 +1,8 @@
 package app.entities;
 
 public class OrderLine {
+
+    //boolean done/undone for admin
     private int orderLineId;
     private int orderId;
     private int userId;

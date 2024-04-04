@@ -9,9 +9,31 @@
 
 <body>
 
-<h1>Welcome to Cupcake page</h1>
+<h1>Velkommen til Olser Cupcakes</h1>
 
-<p>This is your first web application in this world</p>
+
+
+<h2>Login:</h2>
+
+<form method="post">
+    <input type="text" name="username" placeholder="Email"/>
+    <input type="password" name="password" placeholder="Kodeord"/>
+    <button type="submit" formaction="/login">Login</button>
+
+    <div><p th:text="${message}"></p></div>
+</form>
+
+
+<h2>Opret bruger:</h2>
+
+
+<form method="get">
+    <input type="text" name="username2" placeholder="Email"/>
+    <input type="password" name="password2" placeholder="Kodeord"/>
+    <input type="password" name="password3" placeholder="Gentag kodeord"/>
+    <button type="submit" formaction="index.html">Opret bruger</button>
+</form>
+
 
 </body>
 </html>

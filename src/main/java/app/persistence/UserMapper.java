@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class UserMapper
 {
 
-    public static User login(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
+    public static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException
     {
         String sql = "select * from users where username=? and password=?";
 
@@ -20,7 +20,7 @@ public class UserMapper
                 PreparedStatement ps = connection.prepareStatement(sql)
         )
         {
-            ps.setString(1, userName);
+            ps.setString(1, username);
             ps.setString(2, password);
 
             ResultSet rs = ps.executeQuery();
@@ -28,7 +28,7 @@ public class UserMapper
             {
                 String role = rs.getString("role"); //*
                 int id = rs.getInt("user_id");
-                return new User(id, userName, password,role);
+                return new User(id, username, password,role);
             } else
             {
                 throw new DatabaseException("Fejl i login. Prøv igen");
@@ -40,7 +40,7 @@ public class UserMapper
         }
     }
 
-    public static void createuser(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
+    public static void createuser(String username, String password, ConnectionPool connectionPool) throws DatabaseException
     {
         String sql = "insert into users (username, password) values (?,?)";
 
@@ -49,7 +49,7 @@ public class UserMapper
                 PreparedStatement ps = connection.prepareStatement(sql)
         )
         {
-            ps.setString(1, userName);
+            ps.setString(1, username);
             ps.setString(2, password);
 
             int rowsAffected = ps.executeUpdate();

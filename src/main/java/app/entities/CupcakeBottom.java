@@ -1,6 +1,6 @@
 package app.entities;
 
-public class cupcakeBottom {
+public class CupcakeBottom {
     private int cupcakeBottomId;
     private String name;
     private int price;
@@ -14,7 +14,7 @@ public class cupcakeBottom {
                 '}';
     }
 
-    public cupcakeBottom(int cupcakeBottomId, String name, int price) {
+    public CupcakeBottom(int cupcakeBottomId, String name, int price) {
         this.cupcakeBottomId = cupcakeBottomId;
         this.name = name;
         this.price = price;
