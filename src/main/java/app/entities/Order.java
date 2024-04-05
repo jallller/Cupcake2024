@@ -1,9 +1,9 @@
 package app.entities;
 
 public class Order {
-    public Order(int orderIdId, int userId, int price){
+    public Order(int orderIdId, int user_Id, int price){
         this.orderId = orderId;
-        this.userId = userId;
+        this.userId = user_Id;
         this.price = price;
 
     }

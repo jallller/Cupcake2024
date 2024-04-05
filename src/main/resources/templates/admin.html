@@ -9,13 +9,8 @@
 
 <body>
 
-<h1> Velkommen, <span th:text="${session.currentUser.username}"></span></h1>
 <h1>Velkommen til Olkser Cupcakes</h1>
 
-
-<p>Bestil her:</p>
-
-//Skal være til adminside med hvis bestillinger
 
 <table>
     <thead>
@@ -30,8 +25,8 @@
     </thead>
 
     <tbody>
-    <tr th:each="order: ${orderList}">
-        <th>${orders.order_id}</th>
+    <tr th:each="user: ${userList}">
+        <th>${users.username}</th>
         <td>Hej</td>
         <td>${orders.orders_id}</td>
         <td>Knap</td>
@@ -39,11 +34,6 @@
     </tbody>
 
 </table>
-
-
-<p th:if="${session.currentUser != null }">
-    <a href="index.html" th:href="@{/logout}">Log ud</a>
-</p>
 
 </body>
 </html>

@@ -8,6 +8,22 @@ public class User {
         this.role = role;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
     private int userId;
     private String username;
     private String password;

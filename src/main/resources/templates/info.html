@@ -12,6 +12,7 @@
 <h1>Velkommen til Olser Cupcakes</h1>
 
 
+
 <h2>Login:</h2>
 
 <form method="post">
@@ -33,11 +34,6 @@
     <button type="submit" formaction="index.html">Opret bruger</button>
 </form>
 
-<div th:if="${session.currentUser != null }">
-    <span th:text="${session.currentUser.username}"> </span> |
-    <a href="index.html" th:href="@{/logout}">Log ud</a>
-
-</div>
 
 </body>
 </html>

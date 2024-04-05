@@ -16,7 +16,7 @@ public class OrderMapper
     public static List<Order> getAllOrdersPerUser(int orderId, ConnectionPool connectionPool) throws DatabaseException
     {
         List<Order> orderList = new ArrayList<>();
-        String sql = "select * from order where orders_id=? order by user_Id";
+        String sql = "select * from orders where orders_Id=? order by price";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -27,10 +27,10 @@ public class OrderMapper
             ResultSet rs = ps.executeQuery();
             while (rs.next())
             {
-                int id = rs.getInt("order_id");
-                int userId = rs.getInt("user_Id");
+                int id = rs.getInt("orders_id");
+                int user_Id = rs.getInt("user_Id");
                 int price = rs.getInt("price");
-                orderList.add(new Order(id, userId, price));
+                orderList.add(new Order(id, user_Id, price));
             }
         }
         catch (SQLException e)
@@ -39,19 +39,19 @@ public class OrderMapper
         }
         return orderList;
     }
-//
-//    public static Order addTask(User user, String taskName, ConnectionPool connectionPool) throws DatabaseException
+
+//    public static Order addOrder(User user, String orderName, ConnectionPool connectionPool) throws DatabaseException
 //    {
-//        Task newTask = null;
+//        Order newOrder = null;
 //
-//        String sql = "insert into task (name, done, user_id) values (?,?,?)";
+//        String sql = "insert into orders (orders_id, user_id,price) values (?,?,?)";
 //
 //        try (
 //                Connection connection = connectionPool.getConnection();
 //                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
 //        )
 //        {
-//            ps.setString(1, taskName);
+//            ps.setString(1, orderName);
 //            ps.setBoolean(2, false);
 //            ps.setInt(3, user.getUserId());
 //            int rowsAffected = ps.executeUpdate();
@@ -60,19 +60,19 @@ public class OrderMapper
 //                ResultSet rs = ps.getGeneratedKeys();
 //                rs.next();
 //                int newId = rs.getInt(1);
-//                newTask = new Task(newId, taskName, false, user.getUserId());
+//                newOrder = new Order(newId, orderName,0, user.getUserId());
 //            } else
 //            {
-//                throw new DatabaseException("Fejl under indsætning af task: " + taskName);
+//                throw new DatabaseException("Fejl under indsætning af task: " + orderName);
 //            }
 //        }
 //        catch (SQLException e)
 //        {
 //            throw new DatabaseException("Fejl i DB connection", e.getMessage());
 //        }
-//        return newTask;
+//        return newOrder;
 //    }
-//
+
 //    public static void setDoneTo(boolean done, int taskId, ConnectionPool connectionPool) throws DatabaseException
 //    {
 //        String sql = "update task set done = ? where task_id = ?";
