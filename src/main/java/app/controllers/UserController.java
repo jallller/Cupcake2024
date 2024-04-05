@@ -63,6 +63,11 @@ public class UserController {
             //Hvis ja send videre til orderside
             List<Order> orderList = OrderMapper.getAllOrdersPerUser(user.getUserId(),connectionPool);
             ctx.attribute("orderList",orderList);
+
+//            if(user.getRole().equals("admin")) {
+//                ctx.render("admin.html");
+//            }
+
             ctx.render("order.html");
         } catch (DatabaseException e) {
             //Hvis nej send tilbage til loginside med fejlbesked
