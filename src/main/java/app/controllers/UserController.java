@@ -16,6 +16,34 @@ public class UserController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("login", ctx -> login(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));
+        app.get("createuser",ctx -> ctx.render("createuser.html"));
+        app.post("createuser",ctx -> createUser(ctx, connectionPool));
+    }
+
+    private static void createUser(Context ctx,ConnectionPool connectionPool) {
+        //Hent formparametre
+        String username = ctx.formParam("username");
+        String password1 = ctx.formParam("password1");
+        String password2 = ctx.formParam("password2");
+
+        if(password1.equals(password2)){
+            try {
+                UserMapper.createuser(username,password1,connectionPool);
+                ctx.attribute("message","Brugeren oprettet med brugernavn: " + username + ". Log venligst på");
+                ctx.render("index.html");
+
+            } catch (DatabaseException e) {
+                ctx.attribute("message","Brugernavnet er allerede i brug");
+                ctx.render("createuser.html");
+            }
+
+        } else {
+            ctx.attribute("message","Kodeordende matcher ikke");
+            ctx.render("createuser.html");
+        }
+
+        //Messages mangler
+        //Unikt kodeord
     }
 
     private static void logout(Context ctx) {
