@@ -13,30 +13,28 @@
         <img src="../public/images/logo.png" th:src="@{/images/logo.png}" width="100%"/>
     </a>
 </header>
-<h1>ADMIN/h1>
+
+<a href="admin.html">Kunder</a>
+<a href="admin.html">Bestillinger</a>
+
+
+<h1>ADMIN</h1>
 
 
 <table>
     <thead>
     <tr>
-        <th>
-            1
-        </th>
-        <th>
-            2
-        </th>
+        <th>Item</th>
+        <th>Action</th>
     </tr>
     </thead>
-
     <tbody>
-    <tr th:each="user: ${userList}">
-        <th>${users.username}</th>
-        <td>Hej</td>
-        <td>${orders.orders_id}</td>
+    <tr th:each="order: ${orderList}">
+        <td>${order.orders_id}</td>
         <td>Knap</td>
+
     </tr>
     </tbody>
-
 </table>
 
 </body>

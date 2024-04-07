@@ -15,18 +15,19 @@ h1 {
 
 .login-form input[type=text],  .login-form input[type=password]{
     padding: 10px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .login-form button {
     padding: 10px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 5px;
-    background-color: green;
+    background-color: #50298B;
     color: white;
 
 }
 
 .login-form button:hover{
-    background-color: lightgreen;
+    background-color: #9B6FC7;
+
 }

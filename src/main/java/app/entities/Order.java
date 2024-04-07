@@ -10,7 +10,11 @@ public class Order {
 
     private int orderId;
     private int userId;
+
+
     private int price;
+
+
 
     @Override
     public String toString() {

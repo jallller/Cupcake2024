@@ -1,5 +1,6 @@
 package app.persistence;
 
+import app.entities.Order;
 import app.entities.User;
 import app.exceptions.DatabaseException;
 
@@ -7,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserMapper
 {
@@ -27,7 +30,7 @@ public class UserMapper
             if (rs.next())
             {
                 String role = rs.getString("role"); //*
-                int id = rs.getInt("user_id");
+                int id = rs.getInt("user_Id");
                 return new User(id, username, password,role);
             } else
             {
@@ -40,32 +43,55 @@ public class UserMapper
         }
     }
 
-    public static void createuser(String username, String password, ConnectionPool connectionPool) throws DatabaseException
-    {
+    public static void createuser(String username, String password, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "insert into users (username, password) values (?,?)";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new DatabaseException("Fejl ved oprettelse af ny bruger");
+            }
+        } catch (SQLException e) {
+            String msg = "Der er sket en fejl. Prøv igen";
+            if (e.getMessage().startsWith("ERROR: duplicate key value ")) {
+                msg = "Brugernavnet findes allerede. Vælg et andet";
+            }
+            throw new DatabaseException(msg, e.getMessage());
+        }
+
+    }
+    public static List<User> getAllUsers(int userId, ConnectionPool connectionPool) throws DatabaseException
+    {
+        List<User> userList = new ArrayList<>();
+        String sql = "select * from users where username=? order by username";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
         )
         {
-            ps.setString(1, username);
-            ps.setString(2, password);
 
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected != 1)
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
             {
-                throw new DatabaseException("Fejl ved oprettelse af ny bruger");
+                int id = rs.getInt("user_Id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String role = rs.getString("role");
+                userList.add(new User(id, username,password,role));
             }
         }
         catch (SQLException e)
         {
-            String msg = "Der er sket en fejl. Prøv igen";
-            if (e.getMessage().startsWith("ERROR: duplicate key value "))
-            {
-                msg = "Brugernavnet findes allerede. Vælg et andet";
-            }
-            throw new DatabaseException(msg, e.getMessage());
+            throw new DatabaseException("Fejl!!!!", e.getMessage());
         }
+        return userList;
     }
 }

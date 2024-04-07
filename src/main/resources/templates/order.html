@@ -14,13 +14,41 @@
     </a>
 </header>
 
+<a href="index.html">Login</a>
+<a href="info.html">Info</a>
+<a href="order.html">Kurv</a>
+
 <h1> Velkommen, <span th:text="${session.currentUser.username}"></span></h1>
 <h1>Velkommen til OLSKER Cupcakes</h1>
 
 
 <p>Bestil her:</p>
 
-//Skal være til adminside med vis bestillinger
+<form action="/order.html">
+    <label for="top">Vælg top:</label>
+    <select name="top" id="top">
+        <option value="Chokolade">Chokolade pris: 5.00</option>
+        <option value="Vanilje">Vanilje pris: 5.00</option>
+        <option value="Muskatnød">Muskatnød pris: 5.00</option>
+        <option value="Pistachie">Pistachie pris: 6.00</option>
+        <option value="Mandel">Mandel pris: 7.00</option>
+    </select>
+
+    <label for="bottom">Vælg bund:</label>
+    <select name="top" id="bottom">
+        <option value="Chokolade">Chokolade pris: 5.00</option>
+        <option value="Blåbær">Blåbær pris: 5.00</option>
+        <option value="Hindbær">Hindbær pris: 5.00</option>
+        <option value="Crispy">Crispy pris: 6.00</option>
+        <option value="Jordbær">Jordbær pris: 6.00</option>
+        <option value="Rum/rossin">Rum/rossin pris: 7.00</option>
+        <option value="Appelsin">Appelsin pris: 8.00</option>
+        <option value="Citron">Citron pris: 8.00</option>
+
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
 
 <table>
     <thead>
@@ -35,7 +63,7 @@
     </thead>
 
     <tbody>
-    <tr th:each="order: ${orderList}">
+    <tr th:each="orders: ${orderList}">
         <th>${orders.order_id}</th>
         <td>Hej</td>
         <td>${orders.orders_id}</td>
