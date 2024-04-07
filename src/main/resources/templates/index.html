@@ -38,10 +38,10 @@
     <button type="submit" formaction="index.html">Opret bruger</button>
 </form>
 
+
 <div th:if="${session.currentUser != null }">
     <span th:text="${session.currentUser.username}"> </span> |
     <a href="index.html" th:href="@{/logout}">Log ud</a>
-
 </div>
 
 <p> <a href="createuser.html" th:href="@{/createuser}">Opret bruger</a> </p>

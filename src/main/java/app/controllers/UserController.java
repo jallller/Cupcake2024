@@ -67,8 +67,13 @@ public class UserController {
 //            if(user.getRole().equals("admin")) {
 //                ctx.render("admin.html");
 //            }
+            if(user.getRole().equals("admin")) {
+                ctx.render("admin.html");
+            } else {
+                ctx.render("order.html");
+            }
 
-            ctx.render("order.html");
+            //ctx.render("order.html");
         } catch (DatabaseException e) {
             //Hvis nej send tilbage til loginside med fejlbesked
             ctx.attribute("message",e.getMessage());
