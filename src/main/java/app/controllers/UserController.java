@@ -18,6 +18,8 @@ public class UserController {
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
+        //app.post("getAllUsers", ctx -> getAllUsers(ctx, connectionPool));
+
 
     }
 
@@ -26,10 +28,12 @@ public class UserController {
         String username = ctx.formParam("username");
         String password1 = ctx.formParam("password1");
         String password2 = ctx.formParam("password2");
+        String role = ctx.formParam("role");
+        int balance = Integer.parseInt(ctx.formParam("balance"));
 
         if (password1.equals(password2)) {
             try {
-                UserMapper.createuser(username, password1, connectionPool);
+                UserMapper.createuser(username, password1, role, balance, connectionPool);
                 ctx.attribute("message", "Brugeren oprettet med brugernavn: " + username + ". Log venligst på");
                 ctx.render("index.html");
 
@@ -77,8 +81,29 @@ public class UserController {
         }
 
 
-
     }
+
+//    public static void getAllUsers(Context ctx, ConnectionPool connectionPool) {
+//        //Hent formparametre
+//        int user_id = Integer.parseInt(ctx.formParam("user_Id"));
+//        String username = ctx.formParam("username");
+//        String password = ctx.formParam("password");
+//        String role = ctx.formParam("role");
+//        int balance = Integer.parseInt(ctx.formParam("balance"));
+//
+//
+//        try {
+//            User user = (User) UserMapper.getAllUsers(user_id,username, password, role, balance, connectionPool);
+//            ctx.sessionAttribute("currentUser", user);
+//
+//            ctx.render("order.html");
+//
+//
+//        } catch (DatabaseException e) {
+//            ctx.attribute("message", e.getMessage());
+//            ctx.render("index.html");
+//        }
+//    }
 
 }
 

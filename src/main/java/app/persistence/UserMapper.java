@@ -43,8 +43,8 @@ public class UserMapper
         }
     }
 
-    public static void createuser(String username, String password, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "insert into users (username, password) values (?,?)";
+    public static void createuser(String username, String password, String role, int balance, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "insert into users (username, password,role,balance) values (?,?,?,?)";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -52,6 +52,8 @@ public class UserMapper
         ) {
             ps.setString(1, username);
             ps.setString(2, password);
+            ps.setString(3,role);
+            ps.setInt(4,balance);
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected != 1) {
@@ -66,7 +68,7 @@ public class UserMapper
         }
 
     }
-    public static List<User> getAllUsers(int userId, ConnectionPool connectionPool) throws DatabaseException
+    public static List<User> getAllUsers(int user_Id, String username, String password, String role, int balance,  ConnectionPool connectionPool) throws DatabaseException
     {
         List<User> userList = new ArrayList<>();
         String sql = "select * from users where username=? order by username";
@@ -77,14 +79,15 @@ public class UserMapper
         )
         {
 
-            ps.setInt(1, userId);
+            ps.setInt(1, user_Id);
             ResultSet rs = ps.executeQuery();
             while (rs.next())
             {
                 int id = rs.getInt("user_Id");
-                String username = rs.getString("username");
-                String password = rs.getString("password");
-                String role = rs.getString("role");
+                username = rs.getString("username");
+                password = rs.getString("password");
+                role = rs.getString("role");
+                balance = rs.getInt("balance");
                 userList.add(new User(id, username,password,role));
             }
         }

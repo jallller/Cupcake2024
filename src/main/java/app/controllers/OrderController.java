@@ -21,7 +21,7 @@ public class OrderController {
     }
 
     public static void addOrder(Context ctx, ConnectionPool connectionPool) {
-        int order = Integer.parseInt(ctx.formParam("order"));
+        int order = Integer.parseInt(ctx.formParam("orders_id"));
 
         User user = ctx.sessionAttribute("currentUser");
         try {

@@ -27,19 +27,44 @@
 <h2>Opret bruger:</h2>
 
 
-<form method="post">
-    <input type="text" name="username" placeholder="Email"/>
-    <input type="password" name="password1" placeholder="Kodeord"/>
-    <input type="password" name="password2" placeholder="Gentag kodeord"/>
-    <button type="submit" formaction="/createuser">Opret bruger</button>
-</form>
+<!--<form method="post">-->
+<!--    <input type="text" name="username" placeholder="Email"/>-->
+<!--    <input type="password" name="password1" placeholder="Kodeord"/>-->
+<!--    <input type="password" name="password2" placeholder="Gentag kodeord"/>-->
+<!--    <button type="submit" formaction="/createuser">Opret bruger</button>-->
+<!--</form>-->
 
 <!--<div th:if="${session.currentUser != null }">-->
 <!--    <span th:text="${session.currentUser.username}"> </span> |-->
 <!--    <a href="index.html" th:href="@{/logout}">Log ud</a>-->
 
 <!--</div>-->
+<form method="post">
+    <input type="text" name="username" placeholder="Email"/>
+    <input type="password" name="password1" placeholder="Kodeord"/>
+    <input type="password" name="password2" placeholder="Gentag kodeord"/>
+    <input type="text" name="role" placeholder="Rolle">
+    <input type="text" name="balance" placeholder="Balance">
+    <button type="submit" formaction="/createuser">Opret bruger</button>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer class="footer">
+    <div class="row">
+        <div class="column"> Email: cupcake@mail.com></div>
+        <div class="column">Adresse: vej vej Århus</div>
+        <div class="column">Info <br> <a href="info.html" th:href="@{/}">
+            <img src="../public/images/logo.png" th:src="@{/images/logo.png}" width="70%" > </a></div>
 
+        </a>
+
+    </div>
+</footer>
 
 </body>
 </html>

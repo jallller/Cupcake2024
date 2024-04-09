@@ -26,16 +26,24 @@ public class User {
 
     private int userId;
     private String username;
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
     private String password;
     private String role;
+    private int balance;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+    public int getBalance() {
+        return balance;
+    }
+
+    public User(int userId, String username, String password, String role, int balance) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.balance = balance;
     }
 }
