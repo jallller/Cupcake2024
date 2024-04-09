@@ -13,10 +13,11 @@
         <img src="../public/images/logo.png" th:src="@{/images/logo.png}" width="100%"/>
     </a>
 </header>
-
+ <p class="topmenu-right"></p>
 <a href="admin.html">Kunder</a>
 <a href="admin.html">Bestillinger</a>
 
+<p class="topmenu-left"><h1> Velkommen, <span th:text="${session.currentUser.username}"></span></h1></p>
 
 <h1>ADMIN</h1>
 

@@ -15,9 +15,12 @@
     </a>
 </header>
 
-<a href="index.html">Login</a>
-<a href="info.html">Info</a>
-<a href="order.html">Kurv</a>
+<p class="topmenu">
+    <a href="index.html" th:href="@{/logout}">Log ud</a>
+    <a href="info.html">Info</a>
+    <a href="order.html">Kurv</a></p>
+
+<!--<p class="topmenu-left"><h1> Velkommen, <span th:text="${session.currentUser.username}"></span></h1></p>-->
 
 <h1>Velkommen til OLSKER Cupcakes</h1>
 
