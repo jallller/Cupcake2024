@@ -103,6 +103,53 @@ public class OrderMapper
             throw new DatabaseException("Fejl i DB connection", e.getMessage());
         }
         return newOrder;
+
+
+    }
+
+//    public static void createOrder(int orders_id, int user_Id, int price, ConnectionPool connectionPool) throws DatabaseException {
+//        String sql = "insert into orders (orders_id,user_Id,price) values (?,?,?)";
+//
+//        try (
+//                Connection connection = connectionPool.getConnection();
+//                PreparedStatement ps = connection.prepareStatement(sql)
+//        ) {
+//            ps.setInt(1, orders_id);
+//            ps.setInt(2, user_Id);
+//            ps.setInt(3, price);
+//
+//
+//            int rowsAffected = ps.executeUpdate();
+//            if (rowsAffected != 1) {
+//                throw new DatabaseException("Fejl ved oprettelse af ny order");
+//            }
+//        } catch (SQLException e) {
+//            String msg = "Der er sket en fejl. Prøv igen";
+//            if (e.getMessage().startsWith("ERROR: duplicate key value ")) {
+//                msg = "Brugernavnet findes allerede. Vælg et andet";
+//            }
+//            throw new DatabaseException(msg, e.getMessage());
+//        }
+//    }
+
+    public static void createorder(int user_Id, int price, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "insert into users (users_Id,price) values (?,?)";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, user_Id);
+            ps.setInt(2, price);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected != 1) {
+                throw new DatabaseException("Fejl ved oprettelse af ny bruger");
+            }
+        } catch (SQLException e) {
+            String msg = "Der er sket en fejl. Prøv igen";
+            throw new DatabaseException(msg, e.getMessage());
+        }
     }
 
 }

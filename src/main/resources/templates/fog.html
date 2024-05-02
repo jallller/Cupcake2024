@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<title>Cupcake</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../public/css/stylesfog.css" th:href="@{/css/stylesfog.css}" rel="stylesheet"/>
+</head>
+
+<body>
+<header>
+
+    <p class="topmenu">
+
+    <header class="header">
+        <div class="row">
+            <div class="column"><a href="#" th:href="@{/#}">Infooooo</a></div>
+            <div class="column"><a href="info.html" th:href="@{/#}">Infooooo</a></div>
+            <div class="column"><a href="info.html" th:href="@{/#}">Infooooo</a></div>
+            </a>
+
+        </div>
+
+
+        </a>
+
+        </p>
+
+        <a href="index.html" th:href="@{/}">
+            <img src="../public/images/img.png" th:src="@{/images/img.png}" width="5%" class="img"/>
+        </a>
+        <br>
+        <a href="#" class="topmenu-right">Tilbage til forsiden - link </button></a>
+
+
+    </header>
+    </div>
+</header>
+
+
+
+<div class="container">
+
+    <div class="d-flex">
+        <div class="leftpane">
+
+
+            <h2>Hvordan bygger man en carport?</h2>
+            <video width="400" height="350" poster="/images/w3schools_green.jpg" controls>
+                <source src="movie.mp4" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+
+
+
+
+            <br><br><br>
+
+        </div>
+        <div class="middlepane">
+
+            <p class="information">
+            <h2>Design din egen drømmecarport!</h2>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.</p>
+
+            <h3>3D skitse</h3>
+            <a href="index.html" th:href="@{/}">
+                <img src="../public/images/img_1.png" th:src="@{/images/img_1.png}" width="100%" class="img"/>
+            </a>
+
+        </div>
+        <div class="rightpane">
+
+
+            <div class="grey-box">
+
+                <h2>Carport</h2>
+                <form action="#" method="post">
+
+
+                    <h3>Redskabsrum</h3>
+                    <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
+                    <h4>Redskabsrum længde*</h4>
+                    <h4>Redskabsrum bredde*</h4>
+
+                    <form class="carport-form" method="get">
+                        <p>Evt. bemærkning/sørlige ønsker</p>
+                        <input type="text" name="bemærkning"/>
+                        <button type="submit" formaction="#">Opret</button>
+                    </form>
+                </form>
+
+                <form class="contactinfo-form" method="post">
+                    <h2>Personlige oplysninger</h2>
+                    <input type="text" name="fistname" placeholder="Fornavn"/><br><br>
+                    <input type="text" name="lastname" placeholder="Efternavn"/><br><br>
+                    <input type="text" name="email" placeholder="Email"/><br><br>
+                    <input type="text" name="adress" placeholder="Adresse"/><br><br>
+                    <input type="text" name="postnr" placeholder="Postnr"/><br><br>
+                    <input type="text" name="city" placeholder="By"/>
+
+                    <h2>Bankoplysninger</h2>
+                    <input type="text" name="cardnumber" placeholder="Kortnummer"/><br><br>
+                    <input type="text" name="expiration" placeholder="Udløbdato (MM/ÅÅ)"/><br><br>
+                    <input type="text" name="cvv" placeholder="CVV"/><br><br>
+                    <input type="text" name="cardname" placeholder="Kortholders navn"/><br><br>
+
+                    <div class="form-group">
+                        <input type="submit" formaction="#" value="Submit">
+                    </div>
+                </form>
+            </div>
+            <br><br><br>
+
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+<footer class="footer">
+    <div class="row">
+        <div class="column"><a href="info.html" th:href="@{/#}">Infooooo</a></div>
+        <div class="column"><a href="info.html" th:href="@{/#}">Infooooo</a></div>
+        <div class="column"><a href="info.html" th:href="@{/#}">Infooooo</a></div>
+        </a>
+
+    </div>
+</footer>
+</body>
+</html>
+

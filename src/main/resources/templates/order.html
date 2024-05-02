@@ -15,11 +15,16 @@
 </header>
 <p class="topmenu-right">
     <a href="index.html" th:href="@{/logout}">Log ud</a>
+<!--    <a href="info.html" th:href="@{/goToInfo}">Log ud</a>-->
+
     <a href="info.html">Info</a>
-    <a href="order.html">Kurv</a></p>
+    <a href="C:\Users\Jantie\IdeaProjects\Cupcake2024\src\main\resources\templates\order.html">Kurv</a></p>
+
+
+
 
 <p class="topmenu-left"> Bruger: <span th:text="${session.currentUser.username}"></span></p>
-<p class="topmenu-left"> Din konto: , <span th:text="${session.currentUser.balance}"></span></p>
+<p class="topmenu-left"> Din konto:  <span th:text ="${session.currentUser.balance}"></span></p>
 
 
 <h1>Velkommen til OLSKER Cupcakes</h1>
@@ -76,20 +81,20 @@
 
 </table>
 
-<table>
-    <thead>
-    <tr>
-        <th>1</th>
-        <th>2</th>
-    </tr>
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>1</th>-->
+<!--        <th>2</th>-->
+<!--    </tr>-->
 
-    </thead>
-    <tbody>
-    <tr th:each="orders: ${orderList}">
-        <td th:each="text">${user_Id}</td>
-    </tr>
-    </tbody>
-</table>
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="users ${userList}">-->
+<!--        <td th:text="${users.username}"></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
 
 <table>
     <thead>
@@ -138,7 +143,7 @@
         <option value="Citron">Citron pris: 8.00</option>
 
     </select>
-    <button type="submit" formaction="order.html">Order</button>
+    <button type="submit" formaction="reciept.html">Order</button>
 </form>
 <br>
 <br>
@@ -147,16 +152,36 @@
 <br>
 <br>
 <br>
+
+<form class="order-form" method="get">
+    <input type="text" name="orders_id" placeholder="orders_id"/>
+    <input type="password" name="password" placeholder="user_Id"/>
+    <input type="price" name="price" placeholder="price"/>
+    <button type="submit" formaction="/addOrder">submit</button>
+
+    <div><p th:text="${message}"></p></div>
+</form>
+
 <footer class="footer">
     <div class="row">
         <div class="column"> Email: cupcake@mail.com></div>
         <div class="column">Adresse: vej vej Århus</div>
         <div class="column">Info <br> <a href="info.html" th:href="@{/}">
-            <img src="../public/images/logo.png" th:src="@{/images/logo.png}" width="70%" > </a></div>
-
+            <img src="../public/images/logo.png" th:src="@{/images/logo.png}" width="70%"> </a></div>
         </a>
 
     </div>
+
+<!--    <button type="submit" formaction="reciept.html">Bestil</button>-->
+<!--    <p class="receipt"><a href="reciept.html" th:href="@{/reciept}">Bestil kruv</a></p>-->
+
+
+    <form method="post">
+        <input type="text" name="user_Id" placeholder="User_Id"/>
+        <input type="text" name="price" placeholder="price">
+        <button type="submit" formaction="/order">Opret bruger</button>
+    </form>
+
 </footer>
 </body>
 </html>

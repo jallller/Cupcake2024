@@ -16,11 +16,11 @@ public class UserController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("login", ctx -> login(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));
+//        app.get("goToInfo", ctx -> ctx.render("info.html"));
+//        app.post("goToInfo", ctx -> goToInfo(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
         //app.post("getAllUsers", ctx -> getAllUsers(ctx, connectionPool));
-
-
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool) {
@@ -46,14 +46,18 @@ public class UserController {
             ctx.attribute("message", "Kodeordende matcher ikke");
             ctx.render("createuser.html");
         }
-
-
     }
 
     private static void logout(Context ctx) {
         ctx.req().getSession().invalidate();
         ctx.redirect("/");
     }
+
+//    //Link i menu
+//    private static void goToInfo(Context ctx) {
+//        //ctx.redirect("info.html");
+//        ctx.render("info.html");
+//    }
 
     public static void login(Context ctx, ConnectionPool connectionPool) {
         //Hent formparametre
@@ -62,6 +66,7 @@ public class UserController {
 
         //Tjek om bruger findes i DB
         try {
+
             User user = UserMapper.login(username, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
             //Hvis ja send videre til orderside
@@ -80,6 +85,10 @@ public class UserController {
             ctx.render("index.html");
         }
 
+
+    }
+
+    public void updateBalance(){
 
     }
 

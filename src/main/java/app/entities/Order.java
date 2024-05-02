@@ -8,6 +8,10 @@ public class Order {
 
     }
 
+    public Order(int price) {
+        this.price = price;
+    }
+
     private int orderId;
     private int userId;
 

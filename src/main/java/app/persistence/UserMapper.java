@@ -66,7 +66,6 @@ public class UserMapper
             }
             throw new DatabaseException(msg, e.getMessage());
         }
-
     }
     public static List<User> getAllUsers(int user_Id, String username, String password, String role, int balance,  ConnectionPool connectionPool) throws DatabaseException
     {
@@ -88,7 +87,7 @@ public class UserMapper
                 password = rs.getString("password");
                 role = rs.getString("role");
                 balance = rs.getInt("balance");
-                userList.add(new User(id, username,password,role));
+                userList.add(new User(id, username,password,role,balance));
             }
         }
         catch (SQLException e)
@@ -96,5 +95,9 @@ public class UserMapper
             throw new DatabaseException("Fejl!!!!", e.getMessage());
         }
         return userList;
+    }
+
+    public static void updateBalance(int user_id, int balance, ConnectionPool connectionPool){
+        String sql = "insert into users (username, password,role,balance) values (?,?,?,?)";
     }
 }
